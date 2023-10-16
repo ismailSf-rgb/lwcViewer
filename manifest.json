@@ -1,0 +1,42 @@
+{
+    "name": "LWC Dev Console",
+    "version": "1.0",
+    "description": "A simple Chrome extension with a popup.",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+      },
+      "content_scripts": [
+        {
+          "matches": [
+            "https://*.salesforce.com/*",
+            "https://*.visual.force.com/*",
+            "https://*.lightning.force.com/*",
+            "https://*.cloudforce.com/*",
+            "https://*.visualforce.com/*"
+          ],
+          "all_frames": true,
+          "css": [
+            "button.css",
+            "inspect-inline.css"
+          ],
+          "js": [
+            "button.js",
+            "inspect-inline.js"
+          ]
+        }
+      ],
+    "action": {
+        "default_popup": "popup.html"
+      },
+      "permissions": [
+        "cookies",
+        "activeTab"
+      ],
+      "host_permissions": [
+        "https://*.salesforce.com/*",
+        "https://*.force.com/*",
+        "https://*.lightning.force.com/*"
+    ]
+  }
+  
