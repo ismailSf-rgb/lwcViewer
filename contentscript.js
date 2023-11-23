@@ -516,7 +516,11 @@ chrome.tabs.query({
     let urlArr = currentUrl.split('https://');
     console.log('currentUrl splitted : ', urlArr);
     let host = urlArr[1].split('/')[0];
-    sfHost = host.split('.')[0] + '.sandbox.my.salesforce.com';
+	if(currentUrl.includes("sandbox")) {
+		sfHost = host.split('.')[0] + '.sandbox.my.salesforce.com';
+	} else {
+		sfHost = host.split('.')[0] + '.my.salesforce.com';
+	}
     console.log('currentUrl sfhost : ', sfHost);
     sfConn.getSession(sfHost).then(
         (host) => {
